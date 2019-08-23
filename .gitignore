@@ -1,0 +1,6 @@
+node_modules
+app/web_modules
+.cache/
+.idea/
+dist/
+package-lock.json

@@ -1,0 +1,20 @@
+{
+  "scripts": {
+    "prebuild": "pika-web --dest app/web_modules",
+    "build": "parcel build app/index.html",
+    "format": "prettier --print-width 120 --write app/*.js",
+    "start": "http-server app"
+  },
+  "dependencies": {
+    "@hyperapp/events": "0.0.3",
+    "htm": "2.2.1",
+    "hyperapp": "2.0.1",
+    "hyperapp-fx": "2.0.0-beta.1"
+  },
+  "devDependencies": {
+    "@pika/web": "0.5.3",
+    "http-server": "^0.8.5",
+    "parcel": "^1.12.3",
+    "prettier": "1.18.2"
+  }
+}
