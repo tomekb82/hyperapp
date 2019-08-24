@@ -79,6 +79,6 @@ const todoList = state => html`
 export const todoPage = state => html`
          <div class="container">
            ${state.loggedInUser ? todoForm(state) : ""}
-           ${memoized(todoList(state))}
+           ${todoList(state)}
          </div>
        `;
