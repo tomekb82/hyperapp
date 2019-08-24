@@ -47,8 +47,8 @@ const todoForm = state => html`
     <div class="form-group row">
       <label for="status" class="col-sm-2 col-form-label">Example select</label>
       <div class="col-sm-10">
-        <select class="form-control" id="status" required onchange=${[UpdateTodoStatus, targetValue]}>
-          <option selected hidden>Choose here</option>
+        <select class="form-control" id="status" onchange=${[UpdateTodoStatus, targetValue]}>
+          <option hidden>Choose here</option>
           ${statuses.map(todoStatusItem)}
         </select>
       </div>
