@@ -1,27 +1,25 @@
 import { RemoveFromStorage } from "../web_modules/hyperapp-fx.js";
 import { html } from "./html.js";
-import {Redirect} from "./Redirect.js"
+import { Redirect } from "./Redirect.js";
 
 const Logout = state => {
   return [
     { ...state, token: "", loggedInUser: "" },
-    [
-        RemoveFromStorage({ key: "hyperapp:user" }),
-        Redirect({url: "/login"})
-    ]
+    [RemoveFromStorage({ key: "hyperapp:user" }), Redirect({ url: "/login" })]
   ];
 };
 
 const loggedInUserView = name => html`
-  <p class="navbar-text navbar-right">
-    User logged in: ${name}
-    <button onclick=${Logout} class="btn btn-secondary">Logout</button> 
-  </p>
+  <form class="form-inline my-2 my-lg-0">
+    <p class="navbar-text mr-sm-2">User logged in: ${name}</p>
+    <button class="btn btn-secondary my-2 my-sm-0" onclick=${Logout}>Logout</>
+  </form>
 `;
 
 const layout = state => html`
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
+      <a class="navbar-brand" href="#">Hyperapp</a>
       <ul class="nav navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="/">Todos</a>

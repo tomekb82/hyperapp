@@ -1,12 +1,7 @@
 import { html } from "../shared/html.js";
 import { preventDefault, targetValue } from "../shared/events.js";
-import {
-  UpdateTodoName,
-  UpdateTodoDescription,
-  UpdateTodoStatus,
-  AddTodo,
-  statuses
-} from "./app.js";
+import { UpdateTodoName, UpdateTodoDescription, UpdateTodoStatus, AddTodo, statuses } from "./app.js";
+import {memoized} from "../shared/memoized.js";
 
 const todoItem = todo => html`
   <tr>
@@ -52,30 +47,20 @@ const todoForm = state => html`
     <div class="form-group row">
       <label for="status" class="col-sm-2 col-form-label">Example select</label>
       <div class="col-sm-10">
-        <select
-          class="form-control"
-          id="status"
-          required
-          onchange=${[UpdateTodoStatus, targetValue]}
-        >
+        <select class="form-control" id="status" required onchange=${[UpdateTodoStatus, targetValue]}>
           <option selected hidden>Choose here</option>
           ${statuses.map(todoStatusItem)}
         </select>
       </div>
-      ${state.loggedInUser
-        ? html`
-            <button onclick=${preventDefault(AddTodo)} class="btn btn-primary">
-              Add Todo
-            </button>
-          `
-        : ""}
+      <button onclick=${preventDefault(AddTodo)} class="btn btn-primary">
+        Add Todo
+      </button>
     </div>
   </form>
 `;
 
-export const todoList = state => html`
+const todoList = state => html`
   <div class="container">
-    ${todoForm(state)}
     <table class="table">
       <thead>
         <tr>
@@ -90,3 +75,10 @@ export const todoList = state => html`
     </table>
   </div>
 `;
+
+export const todoPage = state => html`
+         <div class="container">
+           ${state.loggedInUser ? todoForm(state) : ""}
+           ${memoized(todoList(state))}
+         </div>
+       `;

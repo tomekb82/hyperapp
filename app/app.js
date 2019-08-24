@@ -1,7 +1,7 @@
-import {app} from "./web_modules/hyperapp.js";
-import {withLayout} from "./shared/layout.js";
-import {ReadUserFromStorage} from "./shared/user.js";
-import {todoList} from "./todos/templates.js"
+import { app } from "./web_modules/hyperapp.js";
+import { withLayout } from "./shared/layout.js";
+import { ReadUserFromStorage } from "./shared/user.js";
+import { todoPage } from "./todos/page.js";
 
 const state = {
   currentTodo: {
@@ -14,6 +14,6 @@ const state = {
 
 app({
   init: () => [state, [ReadUserFromStorage]],
-  view: withLayout(todoList),
+  view: withLayout(todoPage),
   node: document.getElementById("app")
 });

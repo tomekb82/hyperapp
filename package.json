@@ -2,7 +2,7 @@
   "scripts": {
     "prebuild": "pika-web --dest app/web_modules",
     "build": "parcel build app/index.html",
-    "format": "prettier --print-width 120 --write app/*.js",
+    "format": "prettier --print-width 120 --write app/**/.js",
     "start": "http-server app"
   },
   "dependencies": {
