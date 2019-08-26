@@ -37,7 +37,7 @@ export const UpdateTodoStatus = (state, status) => {
 export const SetTodos = (state, data) => ({...state, data});
 
 export const LoadTodosFx = Http({
-  url: "https://limitless-crag-5779.herokuapp.com/hello-world",
+  url: "https://limitless-crag-5779.herokuapp.com/todos",
   options: {
     headers: {
       "Content-Type": "application/json"
