@@ -78,7 +78,7 @@ const todoList = state => html`
 
 export const todoPage = state => html`
          <div class="container">
-         ${state.data.content}
+         ${state.data}
          ${state.loggedInUser ? todoForm(state) : ""}
          ${todoList(state)} 
          </div>
