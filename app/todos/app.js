@@ -1,4 +1,4 @@
-import { WriteToStorage } from "../web_modules/hyperapp-fx.js";
+import { WriteToStorage, Http } from "../web_modules/hyperapp-fx.js";
 
 export const statuses = ["ready", "in_progress", "not_started"];
 
@@ -33,3 +33,15 @@ export const UpdateTodoStatus = (state, status) => {
     currentTodo: { ...state.currentTodo, status }
   };
 };
+
+export const SetTodos = (state, data) => ({...state, data});
+
+export const LoadTodosFx = Http({
+  url: "https://limitless-crag-5779.herokuapp.com/hello-world",
+  options: {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  },
+  action: SetTodos
+});
